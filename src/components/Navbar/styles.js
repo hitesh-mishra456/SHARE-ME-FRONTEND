@@ -3,16 +3,24 @@ import { deepPurple } from '@material-ui/core/colors';
 
 export default makeStyles((theme) => ({
   appBar: {
-    borderRadius: 15,
     margin: '30px 0',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
+    width:'109.7%',
+    marginLeft:'-5%',
+    marginTop:'-0.5%',
     alignItems: 'center',
-    padding: '10px 50px',
+    padding: '6px 50px',
     [theme.breakpoints.down('sm')]: {
       flexDirection: 'column',
     },
+  },
+  SignInButton:{
+    borderRadius:6,
+    padding:'8px 17px',
+    backgroundColor:'#ea4c89',
+    color:'#fff'
   },
   heading: {
     color: theme.palette.primary.main,
@@ -35,13 +43,20 @@ export default makeStyles((theme) => ({
   profile: {
     display: 'flex',
     justifyContent: 'space-between',
-    width: '400px',
+    width: '200px',
     alignItems: 'center',
     [theme.breakpoints.down('sm')]: {
       width: 'auto',
       marginTop: 20,
       justifyContent: 'center',
     },
+  },
+  leftNavbar:{
+    display: 'flex',
+    justifyContent: 'space-between',
+    width: '400px',
+    alignItems: 'center',
+    marginLeft:'1%'
   },
   logout: {
     marginLeft: '20px',

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { TextField, Button, Typography, Paper } from '@material-ui/core';
+import { TextField, Button, Typography, Paper, Container } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import FileBase from 'react-file-base64';
+import Navbar from '../Navbar/Navbar.js';
 import { useHistory } from 'react-router-dom';
 import ChipInput from 'material-ui-chip-input';
 
@@ -33,19 +34,13 @@ const Form = ({ currentId, setCurrentId }) => {
       dispatch(createPost({ ...postData, name: user?.result?.name }, history));
       clear();
     } else {
-      dispatch(updatePost(currentId, { ...postData, name: user?.result?.name }));
+      dispatch(updatePost(currentId, { ...postData, name: user?.result?.name },history));
       clear();
     }
   };
 
   if (!user?.result?.name) {
-    return (
-      <Paper className={classes.paper} elevation={6}>
-        <Typography variant="h6" align="center">
-          Please Sign In to create your own memories and like other's memories.
-        </Typography>
-      </Paper>
-    );
+     history.push('/auth');
   }
 
   const handleAddChip = (tag) => {
@@ -57,12 +52,13 @@ const Form = ({ currentId, setCurrentId }) => {
   };
 
   return (
-    <Paper className={classes.paper} elevation={6}>
+    <Container maxWidth="xl">
+    <Navbar setCurrentId={setCurrentId} currentId={currentId}/>
       <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
-        <Typography variant="h6">{currentId ? `Editing "${post?.title}"` : 'Creating a Post'}</Typography>
+        <Typography variant="h4" style={{marginBottom:'3%', fontWeight:'bold'}}>{currentId ? `Editing "${post?.title}"` : 'Creating a Story'}</Typography>
         <TextField name="title" variant="outlined" label="Title" fullWidth value={postData.title} onChange={(e) => setPostData({ ...postData, title: e.target.value })} />
-        <TextField name="message" variant="outlined" label="Message" fullWidth multiline rows={4} value={postData.message} onChange={(e) => setPostData({ ...postData, message: e.target.value })} />
-        <div style={{ padding: '5px 0', width: '94%' }}>
+        <TextField name="message" variant="outlined" label="Message" fullWidth multiline rows={8} value={postData.message} onChange={(e) => setPostData({ ...postData, message: e.target.value })} />
+        <div style={{ padding: '5px 0', width: '98%' }}>
           <ChipInput
             name="tags"
             variant="outlined"
@@ -77,7 +73,7 @@ const Form = ({ currentId, setCurrentId }) => {
         <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Submit</Button>
         <Button variant="contained" color="secondary" size="small" onClick={clear} fullWidth>Clear</Button>
       </form>
-    </Paper>
+    </Container>
   );
 };
 

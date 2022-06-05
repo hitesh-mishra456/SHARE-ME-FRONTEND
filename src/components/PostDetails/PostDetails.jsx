@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
-import { Paper, Typography, CircularProgress, Divider } from '@material-ui/core/';
+import { Paper, Typography, CircularProgress, Divider,Container } from '@material-ui/core/';
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 import { useParams, useHistory } from 'react-router-dom';
 
+import Navbar from '../Navbar/Navbar';
 import { getPost, getPostsBySearch } from '../../actions/posts';
 import CommentSection from './CommentSection';
 import useStyles from './styles';
@@ -40,15 +41,17 @@ const Post = () => {
   const recommendedPosts = posts.filter(({ _id }) => _id !== post._id);
 
   return (
-    <Paper style={{ padding: '20px', borderRadius: '15px' }} elevation={6}>
+    <Container maxWidth="xl">
+      <Navbar />
       <div className={classes.card}>
         <div className={classes.section}>
-          <Typography variant="h4"> {post.name}</Typography>
+          <Typography variant="h4" align='center' className={classes.postTitleStyling} component="h3">{post.title}</Typography>
           <Divider style={{ margin: '20px 0' }} />
-          <Typography variant="h4" align='center' component="h3">{post.title}</Typography>
-          <Typography gutterBottom variant="body1" component="p">{post.message}</Typography>
-          <Typography gutterBottom variant="h6" color="textSecondary">{post.tags.map((tag) => `#${tag} `)}</Typography>
-          <Typography variant="body1">{moment(post.createdAt).fromNow()}</Typography>
+          <Typography gutterBottom variant="body1" className={classes.postContentStyling} component="p">{post.message}</Typography>
+          <Typography gutterBottom variant="h6"  style={{fontWeight:'bold'}} color="textSecondary">{post.tags.map((tag) => `#${tag} `)}</Typography>
+          <Divider style={{ margin: '20px 0' }} />
+          <Typography variant="h6" style={{fontWeight:'bold'}}>Creator: {post.name}</Typography>
+          <Typography variant="body1">Created :{moment(post.createdAt).fromNow()}</Typography>
           <Divider style={{ margin: '20px 0' }} />
         </div>
         <div className={classes.imageSection}>
@@ -75,7 +78,7 @@ const Post = () => {
           </div>
         </div>
       )}
-    </Paper>
+    </Container>
   );
 };
 

@@ -23,7 +23,7 @@ export default makeStyles({
   },
   overlay: {
     position: 'absolute',
-    top: '20px',
+    top: '170px',
     left: '20px',
     color: 'white',
   },
@@ -42,12 +42,19 @@ export default makeStyles({
     margin: '20px',
   },
   title: {
-    padding: '0 16px',
+    width: '12em',
+    overflow: 'hidden',
+    textOverflow:'ellipsis',
   },
   cardActions: {
-    padding: '0 16px 8px 16px',
-    display: 'flex',
-    justifyContent: 'space-between',
+    padding: '4px 0px 4px 16px',
+    // display: 'flex',
+    // alignContent:'stretch',
+    // justifyContent: 'flex-end',
+  },
+  userNameDisplay:{
+    marginRight:'17%',
+    fontSize:'1rem'
   },
   cardAction: {
     display: 'inline-block',

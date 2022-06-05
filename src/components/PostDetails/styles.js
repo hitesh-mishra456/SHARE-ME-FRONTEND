@@ -36,6 +36,15 @@ export default makeStyles((theme) => ({
       flexDirection: 'column',
     },
   },
+  postTitleStyling:{
+    marginBottom:'3%', 
+    fontWeight:'bold'
+  },
+  postContentStyling:{
+    fontFamily:'Arial', 
+    fontSize:'1.2rem',
+    lineHeight:'1.8'
+  },
   loadingPaper: {
     display: 'flex',
     justifyContent: 'center',
