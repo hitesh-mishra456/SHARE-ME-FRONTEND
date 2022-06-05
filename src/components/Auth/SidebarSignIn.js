@@ -9,7 +9,7 @@ const SidebarSignIn = ({isSignup}) =>{
         <Container className={isSignup?classes.backgroundSignUp:classes.backgroundSignIn} component="main" maxWidth="lg">
            <Container className={classes.logoName}>
                 <BrandHeading />   
-                <Typography variant="h4" className={classes.subHeading}>Discover the world's top Designers and Creatives</Typography>
+                <Typography variant="h4" className={classes.subHeading}>Discover the world's top StoryWriters and Stories</Typography>
            </Container>        
         </Container>
     );
